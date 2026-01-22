@@ -268,6 +268,27 @@ function generateValueProps() {
     sheet.getRange(i + 2, 9).setValue('gpt-4o-mini');
 
     updated++;
+
+function safeFetch(url) {
+  try {
+    const response = UrlFetchApp.fetch(url, {
+      muteHttpExceptions: true,
+      followRedirects: true,
+      validateHttpsCertificates: true
+    });
+
+    if (response.getResponseCode() >= 400) {
+      log('Fetch failed', url);
+      return null;
+    }
+
+    return response.getContentText();
+  } catch (error) {
+    log('Fetch error', error);
+    return null;
+  }
+}
+
   });
 
   SpreadsheetApp.getUi().alert(`${updated} value propositions generated`);
