@@ -102,6 +102,3 @@ Run in order:
 - Add country inference only when explicitly present
 - Add scheduling trigger for periodic updates
 - Add optional export to JSON/CSV
-
-## License
-MIT (or remove this section if not needed)
